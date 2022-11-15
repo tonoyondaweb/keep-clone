@@ -1,4 +1,4 @@
-Google Keep Clone with React JS and Firebase
+## Google Keep Clone with React JS and Firebase
 
 ## Getting Started
 
