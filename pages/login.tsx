@@ -6,7 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { FcGoogle } from "react-icons/fc";
 import { SiFirebase, SiReact, SiGooglekeep } from "react-icons/si";
 
-export default function login() {
+export default function Login() {
 	const [user] = useAuthState(auth);
     const router = useRouter()
 

@@ -9,7 +9,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 import NewNote from "../components/NewNote";
 import Note from "../components/Note";
 
-export default function index() {
+export default function Index() {
 	const [notes, setNotes] = useState<any>([]);
 	const [user] = useAuthState(auth);
 	const router = useRouter();
@@ -48,11 +48,11 @@ export default function index() {
 					</button>
 				</header>
 				<NewNote />
-				<div>
+				<main className="max-w-[1000px] mx-auto mt-11 px-3 grid gap-5 min-[600px]:grid-cols-2 min-[900px]:grid-cols-3 xl:grid-cols-4">
           {
-            notes.map(note => <Note key={note.id} id={note.id} text={note.noteText} title={note.noteTitle} />)
+            notes.map((note:any) => <Note key={note.id} id={note.id} text={note.noteText} title={note.noteTitle} />)
           }
-				</div>
+				</main>
 			</div>
 		);
 }
