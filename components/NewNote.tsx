@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { MdAdd } from "react-icons/md";
 import { addDoc } from "firebase/firestore";
 import { auth, notesCollectionRef } from "../firebase";
+import {notesContext} from "../pages/index"
 
 export default function NewNote() {
 	const [active, setActive] = useState(true);
 	const [noteTitle, setNoteTitle] = useState("");
 	const [noteText, setNoteText] = useState("");
 	const [user] = useAuthState(auth);
+	const useNotes = useContext(notesContext)
+
 
 	const addNote = async () => {
 		if (user) {
@@ -19,9 +22,9 @@ export default function NewNote() {
 				uid: user.uid,
 			});
 		}
-
-        setNoteTitle("")
-        setNoteText("")
+		setNoteTitle("")
+		setNoteText("")
+		useNotes.getNotes()
 	};
 
 	return (
