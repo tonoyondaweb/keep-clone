@@ -16,7 +16,7 @@ export default function Popup({ popup, currentNoteId }: props) {
 		noteTitle: "",
 		noteText: "",
 	});
-	
+
 	const noteRef = doc(db, "notes", currentNoteId);
 
 	useEffect(() => {
@@ -66,12 +66,12 @@ export default function Popup({ popup, currentNoteId }: props) {
 						onChange={handleInput}
 					/>
 					<hr />
-					<textarea
-						className="w-full h-full resize-none mt-5 outline-none"
+					<TextareaAutosize
+						className="w-full min-h-full resize-none mt-5 outline-none"
 						name="noteText"
 						value={note.noteText}
 						onChange={handleInput}
-					></textarea>
+					/>
 				</div>
 				<div className="flex justify-between mt-5">
 					<button
