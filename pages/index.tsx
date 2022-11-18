@@ -8,6 +8,7 @@ import NewNote from "../components/NewNote";
 import Popup from "../components/Popup";
 import NotesList from "../components/NotesList";
 import Header from "../components/Header";
+import { get } from "https";
 
 export const notesContext = createContext<any>(() => console.log("context"));
 
@@ -23,7 +24,7 @@ export default function Index() {
 	}, [user]);
 
 	useEffect(() => {
-		const unsubscribe = () => {
+		const getNotes = () => {
 			if (user) {
 				const q = query(
 					notesCollectionRef,
@@ -40,10 +41,9 @@ export default function Index() {
 			}
 		};
 
-		return () => {
-			unsubscribe();
-		};
+		getNotes()
 	}, []);
+
 	if (user)
 		return (
 			<notesContext.Provider value={{ setCurrentNoteId, setPopUp, notes }}>
