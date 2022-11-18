@@ -24,7 +24,6 @@ export default function NewNote() {
 		}
 		setNoteTitle("")
 		setNoteText("")
-		useNotes.getNotes()
 	};
 
 	return (

@@ -10,12 +10,15 @@ interface props {
 export default function Note({ id, title, text }: props) {
 	const useNotes = useContext(notesContext);
 
-	const noteData =  { id, title, text };
+	const openNote = () => {
+		useNotes.setCurrentNoteId(id)
+		useNotes.setPopUp(true)
+	}
 
 	return (
 		<div
-			className="border border-gray-300 rounded-lg h-[100px] overflow-hidden flex flex-col justify-center p-[20px] text-gray-600 cursor-pointer transition-shadow hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
-			onClick={(e) => useNotes.openNote(noteData)}
+			className="border border-gray-300 rounded-lg h-[100px] overflow-hidden flex flex-col justify-center p-[20px] text-gray-600 cursor-pointer transition-shadow min-[700px]:hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+			onClick={openNote}
 		>
 			{title || text ? (
 				<>
